@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui';
+import { jsx } from 'theme-ui';
 
 function Header() {
   return (
@@ -15,7 +15,10 @@ function Header() {
           fontSize: 4,
         }}
       >
-        🎬 Mov-x
+        <span role="img" aria-label="movies">
+          🎬
+        </span>{' '}
+        Mov-x
       </a>
       <div sx={{ mx: 'auto' }} />
       <a

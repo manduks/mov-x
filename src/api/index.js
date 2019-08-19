@@ -11,9 +11,6 @@ function get(path, { headers } = {}) {
     },
   })
     .then(response => {
-      console.log(proxyUrl + path);
-      console.log(response);
-
       if (response.status > 500) {
         return Promise.reject(response);
       }
@@ -46,7 +43,7 @@ function get(path, { headers } = {}) {
 
 export default {
   discover: function() {
-    return get(config.config);
+    return get(config.discover);
   },
   search: function(query) {
     return get(`${config.search}${query}`);

@@ -1,6 +1,8 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui';
-import movies from '../data/movies';
+import StarRatings from 'react-star-ratings';
+
+import theme from '../theme';
 
 function Movie({ movie }) {
   return (
@@ -24,6 +26,13 @@ function Movie({ movie }) {
         }}
         src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
         alt={movie.title}
+      />
+      <StarRatings
+        rating={movie.vote_average / 2}
+        starRatedColor={theme.colors.primaryLighten10}
+        numberOfStars={5}
+        starDimension="24px"
+        starSpacing="10px"
       />
       <Styled.h4
         sx={{

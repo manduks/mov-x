@@ -1,10 +1,21 @@
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui';
+import { useState, useEffect } from 'react';
+import { jsx } from 'theme-ui';
 import Movie from './movie';
-import movies from '../data/movies';
+import Api from '../api';
+
+// import movies from '../data/movies';
 
 function Movies() {
-  console.log(movies);
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    async function fetchMovies() {
+      const data = await Api.discover();
+      setMovies(data.results);
+    }
+    fetchMovies();
+  }, []);
 
   return (
     <section
@@ -14,8 +25,8 @@ function Movies() {
         flexWrap: 'wrap',
       }}
     >
-      {movies.results.map(movie => (
-        <Movie movie={movie} />
+      {movies.map(movie => (
+        <Movie key={movie.id} movie={movie} />
       ))}
     </section>
   );
