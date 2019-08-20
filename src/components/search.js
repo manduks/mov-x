@@ -3,7 +3,12 @@ import { useContext } from 'react';
 import { jsx, Styled } from 'theme-ui';
 import StarRatings from 'react-star-ratings';
 import theme from '../theme';
-import { FilterContext, SET_QUERY, SET_RAITING } from '../FilterContext';
+import {
+  FilterContext,
+  SET_QUERY,
+  SET_RAITING,
+  RESET_RAITING,
+} from '../FilterContext';
 
 function Search() {
   const {
@@ -54,9 +59,13 @@ function Search() {
         numberOfStars={5}
         starDimension="32px"
         starSpacing="10px"
-        changeRating={newRaiting =>
-          dispatch({ type: SET_RAITING, raiting: newRaiting })
-        }
+        changeRating={newRaiting => {
+          if (raiting === newRaiting) {
+            dispatch({ type: RESET_RAITING });
+          } else {
+            dispatch({ type: SET_RAITING, raiting: newRaiting });
+          }
+        }}
       />
     </section>
   );

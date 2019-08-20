@@ -2,6 +2,7 @@ import React, { useReducer, createContext } from 'react';
 const SET_QUERY = 'SET_QUERY';
 const RESET_FILTERS = 'RESET_FILTERS';
 const SET_RAITING = 'SET_RAITING';
+const RESET_RAITING = 'RESET_RAITING';
 
 const FilterContext = createContext();
 
@@ -18,6 +19,8 @@ const reducer = (state, action) => {
       return { ...state, query: action.query };
     case SET_RAITING:
       return { ...state, raiting: action.raiting };
+    case RESET_RAITING:
+      return { ...state, raiting: 0 };
     default:
       return state;
   }
@@ -42,4 +45,5 @@ export {
   SET_QUERY,
   RESET_FILTERS,
   SET_RAITING,
+  RESET_RAITING,
 };
