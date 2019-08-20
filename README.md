@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+The purpose of this project is to show how react hooks work and we are using [The Movie DB](https://www.themoviedb.org/) to fetch data.
+
+You can check the [Demo](https://admiring-borg-8749fe.netlify.com/)
+
 ## Available Scripts
 
 In the project directory, you can run:
