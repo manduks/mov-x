@@ -1,11 +1,15 @@
 /** @jsx jsx */
+import { useContext } from 'react';
 import { jsx, Styled } from 'theme-ui';
-import { useState } from 'react';
 import StarRatings from 'react-star-ratings';
 import theme from '../theme';
+import { FilterContext, SET_QUERY, SET_RAITING } from '../FilterContext';
 
 function Search() {
-  let [rating, setRaiting] = useState(0);
+  const {
+    dispatch,
+    state: { query, raiting },
+  } = useContext(FilterContext);
 
   return (
     <section
@@ -34,16 +38,25 @@ function Search() {
           fontSize: 3,
           color: 'backgroundLighten20',
         }}
+        value={query}
+        onChange={e => {
+          const {
+            target: { value },
+          } = e;
+          dispatch({ type: SET_QUERY, query: value });
+        }}
       />
       <br />
       <StarRatings
-        rating={rating}
+        rating={raiting}
         starRatedColor={theme.colors.primary}
         starHoverColor={theme.colors.primaryLighten10}
         numberOfStars={5}
         starDimension="32px"
         starSpacing="10px"
-        changeRating={newRaiting => setRaiting(newRaiting)}
+        changeRating={newRaiting =>
+          dispatch({ type: SET_RAITING, raiting: newRaiting })
+        }
       />
     </section>
   );

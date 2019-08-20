@@ -22,7 +22,7 @@ function Movie({ movie }) {
       <img
         sx={{
           width: '100%',
-          height: [500, 500, 300],
+          height: [500, 600, 300],
         }}
         src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
         alt={movie.title}

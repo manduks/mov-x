@@ -6,7 +6,6 @@ function get(path, { headers } = {}) {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
       ...headers,
     },
   })
