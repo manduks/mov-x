@@ -13,7 +13,7 @@ function Error(props) {
       }}
     >
       <Styled.h2>OOPS</Styled.h2>
-      <Styled.h3>Something whent wrong ‼️</Styled.h3>
+      <Styled.h3>Something whent wrong !!</Styled.h3>
     </section>
   );
 }

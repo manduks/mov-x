@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { useState, useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { jsx } from 'theme-ui';
 import Movie from './movie';
 import { useTheMovieDBApi } from '../api';
@@ -16,7 +16,6 @@ function filterRaiting(movies, raiting) {
 }
 
 function Movies() {
-  // const [movies, setMovies] = useState([]);
   const {
     state: { query, raiting },
   } = useContext(FilterContext);
@@ -24,7 +23,7 @@ function Movies() {
 
   useEffect(() => {
     setQuery(query);
-  }, [query]);
+  });
 
   if (isLoading) {
     return <Loading />;
