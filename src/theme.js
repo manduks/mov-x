@@ -24,7 +24,7 @@ export default {
     heading: 1.125,
   },
   colors: {
-    text: '#000',
+    text: '#FFF',
     grayText: '#e6e6e6',
     background: '#1A2232',
     backgroundLighten10: '#232B3B',
@@ -32,6 +32,7 @@ export default {
     primary: '#A085FF',
     primaryLighten10: '#9D82FF',
     secondary: '#85FFD0',
+    error: 'salmon',
   },
   styles: {
     root: {
@@ -40,7 +41,7 @@ export default {
       fontWeight: 'body',
     },
     Header: {
-      color: 'white',
+      color: 'text',
       bg: 'background',
       height: 500,
       flexDirection: 'column',
@@ -85,7 +86,7 @@ export default {
       py: 2,
       fontWeight: 'bold',
       textDecoration: 'none',
-      color: 'white',
+      color: 'text',
       textTransform: 'Uppercase',
       fontSize: 2,
       ...heading,

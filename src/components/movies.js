@@ -2,8 +2,10 @@
 import { useState, useEffect, useContext } from 'react';
 import { jsx } from 'theme-ui';
 import Movie from './movie';
-import Api from '../api';
+import { useTheMovieDBApi } from '../api';
 import { FilterContext } from '../FilterContext';
+import Loading from './loading';
+import Error from './error';
 
 function filterRaiting(movies, raiting) {
   return raiting
@@ -14,18 +16,22 @@ function filterRaiting(movies, raiting) {
 }
 
 function Movies() {
-  const [movies, setMovies] = useState([]);
+  // const [movies, setMovies] = useState([]);
   const {
     state: { query, raiting },
   } = useContext(FilterContext);
+  const [{ movies, isLoading, isError }, setQuery] = useTheMovieDBApi();
 
   useEffect(() => {
-    async function fetchMovies() {
-      const data = await Api[query ? 'search' : 'discover'](query);
-      setMovies(data.results);
-    }
-    fetchMovies();
+    setQuery(query);
   }, [query]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+  if (isError) {
+    return <Error />;
+  }
 
   return (
     <section
